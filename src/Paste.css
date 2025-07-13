@@ -1,0 +1,614 @@
+/* ========== Global Body & Page Background ========== */
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1506765515384-028b60a970df?auto=format&fit=crop&w=1470&q=80')
+    no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* ========== Navbar ========== */
+/* Fixed and Premium Navbar */
+.navlink {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 0 20px;
+  z-index: 999;
+
+  background: rgba(255, 255, 255, 0.08); /* glass effect */
+  backdrop-filter: blur(20px); 
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* All Links */
+.navlink a {
+  text-decoration: none;
+  color: #f1f1f1;
+  font-size: 17px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+/* Hover and Active State */
+.navlink a:hover,
+.navlink a.active {
+  background-color: rgba(0, 123, 255, 0.15);
+  color: #00eaff;
+  transform: translateY(-1px);
+}
+
+/* To push content below fixed navbar */
+body {
+  padding-top: 80px; /* Adjust based on navbar height */
+}
+
+
+/* ========== Form Container ========== */
+.paste-container {
+  width: 120%; /* almost full width on small screens */
+  max-width: 1000px; /* increased max width */
+  min-height: 70vh; /* 👈 bigger height visible on UI */
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 100px;
+  padding: 70px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction:column;
+  gap: 30px;
+  margin: 50px auto; /* center vertically with spacing */
+  box-sizing: border-box;
+}
+
+
+.input-field,
+.textarea-field {
+  width: 100%;
+  min-height: 70px;
+  padding: 20px 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 45px;
+  font-size: 20px;
+  color: #f5f5f5; /* 🔥 Darker & sharper white text */
+  background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  resize: none;
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+/* Make textarea larger */
+.textarea-field {
+  min-height: 220px;
+}
+
+/* Placeholder styling */
+.input-field::placeholder,
+.textarea-field::placeholder {
+  color: rgba(247, 244, 246, 0.85); /* slightly darker placeholder */
+  font-weight: 800;
+  font-size: 18px;
+}
+
+/* Focus state styling */
+.input-field:focus,
+.textarea-field:focus {
+  border-color: #00eaff;
+  outline: none;
+  box-shadow: 0 0 16px rgba(0, 234, 255, 0.75);
+  color: #f5f4f4; /* full white when typing */
+}
+
+
+/* ========== Submit Button ========== */
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: transform 0.3s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.submit-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0)
+  );
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  z-index: 0;
+}
+
+.submit-btn:hover::before {
+  left: 100%;
+}
+
+.submit-btn:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 14px 35px rgba(0, 198, 255, 0.5),
+              0 0 15px rgba(0, 114, 255, 0.6) inset;
+  background: linear-gradient(135deg, #1de9b6, #1dc4e9);
+  color: #fff;
+}
+
+.submit-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+
+
+
+
+
+
+/* ========== Paste Cards ========== */
+.paste-card {
+  background-color: #f9f9f9;
+  padding: 15px 20px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.paste-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.paste-card h3 {
+  margin: 0 0 8px 0;
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: #222;
+}
+
+.paste-card p {
+  margin: 5px 0;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* ========== Button Group ========== */
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.button-group button {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  user-select: none;
+}
+
+.button-group button:hover {
+  background-color: #0056b3;
+}
+
+.button-group button a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+/* ========== Edit Input / Textarea ========== */
+.edit-input,
+.edit-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  border: 1.5px solid #007bff;
+  border-radius: 6px;
+  font-family: inherit;
+  box-sizing: border-box;
+  color: #222;
+}
+
+.edit-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Update / Cancel Buttons (green/red) */
+.button-group button:nth-child(1) {
+  background-color: #28a745;
+}
+
+.button-group button:nth-child(1):hover {
+  background-color: #1e7e34;
+}
+
+.button-group button:nth-child(2) {
+  background-color: #dc3545;
+}
+
+.button-group button:nth-child(2):hover {
+  background-color: #a71d2a;
+}
+
+
+
+
+
+
+
+
+/* .paste-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+} */
+
+.input-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 700px;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #999;
+  pointer-events: none; /* icon pe click na ho */
+}
+
+.search-input {
+  width: 100%;
+  height: 40px;
+  padding-left: 40px; /* icon ke liye space */
+  border: 1px solid #ccc;
+  border-radius: 100px;
+  font-size: 18px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #007bff; /* blue border on focus */
+}
+
+
+
+
+h1{
+  text-align: start;
+}
+
+
+
+
+
+
+
+
+/* Container */
+
+
+
+
+
+.view-paste-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 110px;
+  padding-left: 150px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.copy-button {
+  align-self: flex-end; /* Button right side pe */
+  padding: 10px 20px;
+  background-color: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.copy-button:hover {
+  background-color: #4f46e5;
+  transform: translateY(-2px);
+}
+
+.copy-button:active {
+  background-color: #4338ca;
+  transform: scale(0.97);
+}
+
+.view-title-input {
+  font-size: 16px;
+  padding: 16px;
+  border: 2px solid #ddd;
+  border-radius: 100px;
+  background-color: #f9f9f9;
+  color: #333;
+  font-weight: 500;
+  outline: none;
+}
+
+.textarea-wrapper {
+  position: relative;
+}
+
+.view-textarea {
+  width: 500px;
+  padding: 20px;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  background-color: #f9f9f9;
+  color: #333;
+  resize: vertical;
+}
+
+
+
+
+/* 📱 Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .view-paste-container {
+    padding: 20px;
+    padding-left: 20px;
+    border-radius: 12px;
+  }
+
+  .copy-button {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .view-title-input {
+    font-size: 14px;
+    padding: 12px;
+    border-radius: 50px;
+  }
+
+  .view-textarea {
+    width: 100%;
+    padding: 14px;
+    font-size: 0.9rem;
+  }
+}
+
+
+/* 📲 Tablet (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .view-paste-container {
+    padding: 40px;
+    padding-left: 40px;
+    border-radius: 14px;
+  }
+
+  .copy-button {
+    padding: 9px 18px;
+    font-size: 0.95rem;
+  }
+
+  .view-title-input {
+    font-size: 15px;
+    padding: 14px;
+    border-radius: 70px;
+  }
+
+  .view-textarea {
+    width: 50px;
+    padding: 16px;
+    font-size: 1rem;
+  }
+}
+
+
+
+
+/* 💻 Laptop/Desktop (769px and above) */
+@media (min-width: 769px) {
+  .view-paste-container {
+    padding: 110px;
+    padding-left: 150px;
+    border-radius: 16px;
+  }
+
+  .copy-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+
+  .view-title-input {
+    font-size: 16px;
+    padding: 16px;
+    border-radius: 100px;
+  }
+
+  .view-textarea {
+    width: 500px;
+    padding: 20px;
+    font-size: 1rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 📱 Mobile Phones (width ≤ 480px) */
+@media (max-width: 480px) {
+  .paste-container {
+    padding: 30px;
+    border-radius: 30px;
+    width: 95%;
+  }
+
+  .input-field,
+  .textarea-field {
+    font-size: 16px;
+    padding: 14px 18px;
+    border-radius: 30px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+
+  .view-paste-container {
+    padding: 20px;
+    padding-left: 20px;
+    border-radius: 12px;
+  }
+
+  .view-textarea {
+    width: 100%;
+  }
+
+  .search-icon {
+    left: 1px;
+  }
+
+  .search-input {
+    padding-left: 22px;
+  }
+}
+
+/* 📲 Tablets (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .paste-container {
+    padding: 50px;
+    border-radius: 60px;
+    width: 100%;
+  }
+
+  .input-field,
+  .textarea-field {
+    font-size: 18px;
+    padding: 18px 20px;
+    border-radius: 36px;
+  }
+
+  .submit-btn {
+    padding: 16px;
+    font-size: 18px;
+  }
+
+  .view-paste-container {
+    padding: 40px;
+    padding-left: 60px;
+    border-radius: 14px;
+  }
+
+  .view-textarea {
+    width: 100%;
+  }
+
+  .search-icon {
+    left: 20px;
+  }
+
+  .search-input {
+    padding-left: 40px;
+  }
+}
+
+/* 💻 Laptops / Desktops (width ≥ 769px) */
+@media (min-width: 769px) {
+  .paste-container {
+    padding: 70px;
+    border-radius: 100px;
+    width: 100%;
+  }
+
+  .input-field,
+  .textarea-field {
+    font-size: 20px;
+    padding: 20px 24px;
+    border-radius: 45px;
+  }
+
+  .submit-btn {
+    padding: 18px;
+    font-size: 20px;
+  }
+
+  .view-paste-container {
+    padding: 110px;
+    padding-left: 150px;
+  }
+
+  .search-icon {
+    left: 700px; /* ya required position */
+  }
+}
